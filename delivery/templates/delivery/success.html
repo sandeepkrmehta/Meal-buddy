@@ -3,9 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Success | Meal Mate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f7f7f7;
+            padding: 40px 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        h3 {
+            font-size: 28px;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+
+        .message-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .message-container h3 {
+            font-size: 32px;
+            color: #4CAF50;
+        }
+
+        .message-container p {
+            font-size: 18px;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .message-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h3>login success!</h3>
+
+    <div class="message-container">
+        <h3>Login Successful!</h3>
+        <p>Welcome to Meal Mate! You have successfully logged in. Feel free to explore the restaurants and place your orders.</p>
+
+        <a href="{% url 'customer_dashboard' username %}" class="btn">Go to Dashboard</a>
+    </div>
+
+    <footer>&copy; 2025 Meal Mate | All Rights Reserved</footer>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Page | Meal Mate</title>
+    <title>Menu | Meal Mate</title>
     <style>
         * {
             margin: 0;
@@ -13,9 +13,8 @@
         }
 
         body {
-            background: #f7f7f7;
+            background: #f0f4f8;
             padding: 40px 20px;
-            color: #333;
         }
 
         header {
@@ -32,15 +31,15 @@
         }
 
         table th, table td {
-            padding: 15px;
+            padding: 12px;
             text-align: left;
             border: 1px solid #ddd;
-            font-size: 16px;
         }
 
         table th {
             background-color: #667eea;
             color: white;
+            font-size: 18px;
         }
 
         table td img {
@@ -50,27 +49,29 @@
             border-radius: 8px;
         }
 
-        table td a {
-            display: inline-block;
-            padding: 8px 20px;
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .checkout-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 30px;
             background-color: #ff6b6b;
             color: white;
+            font-size: 18px;
             text-decoration: none;
+            text-align: center;
             border-radius: 8px;
             font-weight: bold;
             transition: background-color 0.3s ease;
         }
 
-        table td a:hover {
-            background-color: #e55b5b;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.1);
-            font-size: 14px;
-            color: #777;
+        .checkout-btn:hover {
+            background-color: #e85050;
         }
 
         @media (max-width: 768px) {
@@ -83,43 +84,41 @@
                 width: 80px;
                 height: 80px;
             }
-
-            header {
-                font-size: 24px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <header>Welcome, {{ username }}! Here are the restaurants</header>
+    <header>Welcome, {{ username }}! Here’s the current menu</header>
 
     <table>
         <thead>
             <tr>
-                <th>Restaurant Name</th>
+                <th>Item Name</th>
                 <th>Picture</th>
-                <th>Cuisine</th>
-                <th>Rating</th>
-                <th>Operations</th>
+                <th>Description</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            {% for r in restaurantList %}
+            {% for item in itemList %}
                 <tr>
-                    <td>{{ r.name }}</td>
-                    <td><img src="{{ r.picture }}" alt="Restaurant Image"></td>
-                    <td>{{ r.cuisine }}</td>
-                    <td>{{ r.rating }}</td>
-                    <td>
-                        <a href="{% url 'view_menu' r.id username %}">View Menu</a>
-                    </td>
+                    <td>{{ item.name }}</td>
+                    <td><img src="{{ item.picture }}" alt="Item Image"></td>
+                    <td>{{ item.description }}</td>
+                    <td>${{ item.price }}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <footer>&copy; 2025 Meal Mate | Customer Portal</footer>
+    <div class="total-price">
+        <h2>Total Price: ${{ total_price }}</h2>
+    </div>
+
+    <form action="{% url 'checkout' username %}">
+        <input type="submit" class="checkout-btn" value="Checkout">
+    </form>
 
 </body>
 </html>
