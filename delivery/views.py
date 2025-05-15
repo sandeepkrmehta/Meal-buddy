@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
 import razorpay
 
@@ -25,6 +25,8 @@ def home(request):
     return render(request, 'home.html')
 
 
+def logout_view(request):
+    return render(request, 'delivery/index.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -195,7 +197,7 @@ def checkout(request, username):
     order_data = {
         'amount': int(total_price * 100),  # Amount in paisa
         'currency': 'INR',
-        'payment_capture': '1',  
+        'payment_capture': '1',  # Automatically capture payment
     }
     order = client.order.create(data=order_data)
 
