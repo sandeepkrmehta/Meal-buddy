@@ -6,12 +6,12 @@
 ```md
 ## Meal Mate 🍽️
 
-A simple yet functional food ordering platform using **Python Django** and **SQLite**. Users can sign up, browse menus, place orders, and track real-time status.
+A simple yet functional food ordering platform using **Python Django** and **MySQL**. Users can sign up, browse menus, place orders, and track real-time status.
 
 ### 🔧 Tech Stack
 - Backend: Django
 - Frontend: HTML, CSS, Django Templates
-- DB: SQLite
+- DB: MySQL
 
 ### ✅ Features
 - User registration & login
